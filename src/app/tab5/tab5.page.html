@@ -17,39 +17,43 @@
     <ion-grid>
       <ion-row>
         <ion-col sizeXs="2" sizeMd="1" sizeXl="1">Id</ion-col>
-        <ion-col sizeXs="6" sizeMd="4" sizeXl="1">Supplier</ion-col>
-        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">CNPJ</ion-col>
+        <ion-col sizeXs="6" sizeMd="5" sizeXl="3">Supplier</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="5" sizeXl="3">CNPJ</ion-col>
 
-        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">Cellphone</ion-col>
-        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">Email</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col hidden-lg-col" sizeMd="2">Cellphone</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col hidden-lg-col" sizeMd="2">Email</ion-col>
 
-        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">CEP</ion-col>
-        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">Locality</ion-col>
-        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">UF</ion-col>
-        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">Distritc</ion-col>
-        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">Public Place</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col hidden-lg-col hidden-xl-col" sizeMd="2">CEP</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col hidden-lg-col hidden-xl-col" sizeMd="2">Locality</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col hidden-lg-col hidden-xl-col" sizeMd="2">UF</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col hidden-lg-col hidden-xl-col" sizeMd="2">Distritc</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col hidden-lg-col hidden-xl-col" sizeMd="2">Public Place</ion-col>
 
-        <ion-col sizeXs="4" sizeMd="1" sizeXl="1"
-          class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col">Data</ion-col>
+        <ion-col sizeXs="4" sizeMd="1" class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col">Data</ion-col>
       </ion-row>
 
       <ion-row *ngFor="let supplier of suppliers">
         <ion-col sizeXs="2" sizeMd="1" sizeXl="1">{{supplier.id}}</ion-col>
-        <ion-col sizeXs="6" sizeMd="4" sizeXl="1">{{supplier.corporateName}}</ion-col>
-        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">{{supplier.cnpj}}</ion-col>
+        <ion-col sizeXs="6" sizeMd="5" sizeXl="3">{{supplier.corporateName}}</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="5" sizeXl="3">{{supplier.cnpj}}</ion-col>
 
-        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">{{supplier.contact.cellphone}}</ion-col>
-        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">{{supplier.contact.email}}</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col hidden-lg-col" sizeMd="2">{{supplier.contact.cellphone}}</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col hidden-lg-col" sizeMd="2">{{supplier.contact.email}}</ion-col>
 
-        
-        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">{{supplier.address.cep}}</ion-col>
-        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">{{supplier.address.localidade}}</ion-col>
-        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">{{supplier.address.uf}}</ion-col>
-        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">{{supplier.address.bairro}}</ion-col>
-        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">{{supplier.address.logradouro}}</ion-col>
 
-        <ion-col sizeXs="4" sizeMd="1" sizeXl="1"
-          class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col btn-modal" (click)="openModal(supplier.id)">
+        <ion-col class="hidden-xs-col hidden-md-col hidden-lg-col hidden-xl-col"
+          sizeMd="2">{{supplier.address.cep}}</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col hidden-lg-col hidden-xl-col"
+          sizeMd="2">{{supplier.address.localidade}}</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col hidden-lg-col hidden-xl-col"
+          sizeMd="2">{{supplier.address.uf}}</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col hidden-lg-col hidden-xl-col"
+          sizeMd="2">{{supplier.address.bairro}}</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col hidden-lg-col hidden-xl-col"
+          sizeMd="2">{{supplier.address.logradouro}}</ion-col>
+
+        <ion-col sizeXs="4" sizeMd="1" class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col btn-modal"
+          (click)="openModal(supplier.id)">
           Show
         </ion-col>
       </ion-row>

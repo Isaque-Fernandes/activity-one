@@ -38,19 +38,7 @@ ion-grid {
       display: none;
     }
 
-    .hidden-sm-col {
-      display: none;
-    }
-
     .hidden-md-col {
-      display: none;
-    }
-
-    .hidden-lg-col {
-      display: none;
-    }
-
-    .hidden-xl-col {
       display: none;
     }
 
@@ -70,7 +58,7 @@ ion-grid {
       display: block;
     }
 
-    .hidden-xl-col {
+    .hidden-lg-col{
       display: none;
     }
 
@@ -79,20 +67,24 @@ ion-grid {
     }
   }
 
-    @media screen and (min-width: 1200px){
-      .hidden-xs-col {
-        display: none;
-      }
-  
-      .hidden-md-col {
-        display: block;
-      }
-  
-      .hidden-xl-col {
-        display: block;
-      }
-  
-      .show-xs-col {
-        display: block;
-      }
+  @media screen and (min-width: 1200px){
+    .hidden-xs-col {
+      display: none;
+    }
+
+    .hidden-md-col {
+      display: block;
+    }
+
+    .hidden-lg-col{
+      display: block;
+    }
+
+    .hidden-xl-col{
+      display: none;
+    }
+
+    .show-xs-col {
+      display: block;
+    }
   }

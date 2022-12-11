@@ -30,7 +30,7 @@ export class Tab4Page implements OnInit {
   ngOnInit(): void {
     this.supplierForm = this.formBuilder.group({
         corporateName: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ùÂ-û ]+$/)]],
-        cnpj: ['', [Validators.required, /*Validators.pattern(/\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}/)*/]],
+        cnpj: ['', [Validators.required, Validators.pattern(/\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}/)]],
         contact: this.formBuilder.group({
           email: ['', [Validators.required, Validators.email]],
           cellphone: ['', [Validators.required, Validators.minLength(14), Validators.maxLength(14)]],
