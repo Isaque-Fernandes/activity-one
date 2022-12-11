@@ -11,8 +11,8 @@ ion-grid {
   
   ion-col {
     border: 1px solid white;
-    border-bottom: 0;
-    border-right: 0;
+    // border-bottom: 0;
+    // border-right: 0;
     text-align: center;
   }
   
@@ -27,6 +27,7 @@ ion-grid {
   .btn-modal {
     text-transform: capitalize;
   }
+
   .btn-modal:hover {
     text-decoration: underline;
     cursor: pointer;
@@ -61,7 +62,7 @@ ion-grid {
 
   
 
-    @media screen and (min-width: 768px) and (max-width: 1199px){
+    @media screen and (min-width: 768px){
     .hidden-xs-col {
       display: none;
     }
@@ -70,29 +71,7 @@ ion-grid {
       display: block;
     }
 
-    .hidden-xl-col {
+    .show-xs-col {
       display: none;
     }
-
-    .show-xs-col {
-      display: block;
-    }
-  }
-
-    @media screen and (min-width: 1200px){
-      .hidden-xs-col {
-        display: none;
-      }
-  
-      .hidden-md-col {
-        display: block;
-      }
-  
-      .hidden-xl-col {
-        display: block;
-      }
-  
-      .show-xs-col {
-        display: block;
-      }
   }
