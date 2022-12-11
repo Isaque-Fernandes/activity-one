@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ProductService } from '../service/product.service';
@@ -18,7 +18,7 @@ export class Tab2Page implements OnInit {
   productForm!: FormGroup;
   product!: Product;
 
-  suppliers!: Supplier[];
+  suppliers: Supplier[] = [];
 
   notificationMessage !: string;
   editable: boolean = false;
@@ -31,28 +31,24 @@ export class Tab2Page implements OnInit {
     private router: Router,
   ) { }
 
+  public ionViewWillEnter(){
+    this.list();
+  }
+
   ngOnInit(): void {
-    this.supplierService.list().subscribe({
-      next: (rs) => {
-        this.suppliers = rs;
-      },
-      error: (err) => {
-        console.error(err);
-      },
-    })
 
     this.productForm = this.formBuilder.group({
-      productName: ['', []],
-      quantity: ['', []],
-      purchasePrice: ['', []],
-      percentage: ['', []],
-      salePrice: ['', []],
+      productName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[A-z ]+$/)]],
+      quantity: ['', [Validators.required, Validators.minLength(1), Validators.pattern(/^[0-9]$/)]],
+      purchasePrice: ['', [Validators.required, Validators.pattern(/^[0-9]$/)]],
+      percentage: ['', [Validators.required, Validators.pattern(/^[0-9]$/)]],
+      salePrice: ['', [Validators.required]],
 
       supplier: this.formBuilder.group({
         id: ['', []],
-        corporateName: ['', []]
       })
     })
+
 
     this.activatedRoute.paramMap.subscribe(params => {
       const catchProductId = +params.get('id')!;
@@ -68,13 +64,28 @@ export class Tab2Page implements OnInit {
         })
       };
     })
+
+  }
+
+  list(): void {
+    this.supplierService.list().subscribe({
+      next: (rs) => {
+        this.suppliers = rs;
+
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    })
   }
 
   register(): void {
     const product = this.productForm.getRawValue() as Product;
 
-    const supplier = this.productForm.getRawValue() as Supplier;
-    
+    let supplier = this.productForm.getRawValue() as Supplier;
+
+    supplier = this.suppliers.filter(supplier => supplier.id == product.supplier.id)[0];
+
     product.supplier.corporateName = supplier.corporateName;
 
     this.productService.register(product).subscribe({
@@ -116,7 +127,14 @@ export class Tab2Page implements OnInit {
 
   update() {
     const product = this.productForm.getRawValue() as Product;
+
     product.id = this.product.id;
+
+    const supplier = this.suppliers.filter(supplier => supplier.id == product.supplier.id)[0];
+
+    product.supplier.corporateName = supplier.corporateName;
+
+    // console.log(product);
 
     this.productService.update(product).subscribe({
       next: () => {

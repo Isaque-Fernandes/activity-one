@@ -19,7 +19,7 @@ export class Tab1Page {
     this.list();
   }
 
-  list() {
+  list(): void {
     this.productService.list().subscribe({
       next: (rs) => { this.products = rs },
       error: (err) => { console.error(err) },

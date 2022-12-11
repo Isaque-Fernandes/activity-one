@@ -22,23 +22,23 @@ export class ProductService {
   ) { }
 
   register(product: Product): Observable<any> {
-    return this.http.post(`${environment.JSON_SERVER_URL}/product-2`, product, HttpOptions);
+    return this.http.post(`${environment.JSON_SERVER_URL}/product`, product, HttpOptions);
   }
 
   list(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${environment.JSON_SERVER_URL}/product-2`);
+    return this.http.get<Product[]>(`${environment.JSON_SERVER_URL}/product`);
   }
 
   find(id: number): Observable<Product> {
-    return this.http.get<Product>(`${environment.JSON_SERVER_URL}/product-2/${id}`);
+    return this.http.get<Product>(`${environment.JSON_SERVER_URL}/product/${id}`);
   }
 
   update(product: Product): Observable<any> {
-    return this.http.put(`${environment.JSON_SERVER_URL}/product-2/${product.id}`, product, HttpOptions);
+    return this.http.put(`${environment.JSON_SERVER_URL}/product/${product.id}`, product, HttpOptions);
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete(`${environment.JSON_SERVER_URL}/product-2/${id}`);
+    return this.http.delete(`${environment.JSON_SERVER_URL}/product/${id}`);
   }
 
 }

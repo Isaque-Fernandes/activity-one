@@ -22,7 +22,7 @@
     <ion-card *ngFor="let product of products">
       <ion-card-header>
         <ion-card-title>{{product.productName}}</ion-card-title>
-        <ion-card-subtitle>Supplier: {{product.supplier.id}}</ion-card-subtitle>
+        <ion-card-subtitle>Supplier: {{product.supplier.corporateName}}</ion-card-subtitle>
         <ion-card-subtitle>Quantity: {{product.quantity}}</ion-card-subtitle>
         <ion-card-subtitle>Value R$: {{product.salePrice}}</ion-card-subtitle>
       </ion-card-header>

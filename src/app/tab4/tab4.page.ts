@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from '../model/address.model';
 import { Supplier } from '../model/supplier.model';
@@ -29,20 +29,19 @@ export class Tab4Page implements OnInit {
 
   ngOnInit(): void {
     this.supplierForm = this.formBuilder.group({
-        corporateName: ['', []],
-        cnpj: ['', []],
-
+        corporateName: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ùÂ-û ]+$/)]],
+        cnpj: ['', [Validators.required, /*Validators.pattern(/\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}/)*/]],
         contact: this.formBuilder.group({
-          email: ['', []],
-          cellphone: ['', []],
+          email: ['', [Validators.required, Validators.email]],
+          cellphone: ['', [Validators.required, Validators.minLength(14), Validators.maxLength(14)]],
         }),
 
         address: this.formBuilder.group({
-          cep: ['', []],
-          localidade: ['', []],
-          uf: ['', []],
-          bairro: ['', []],
-          logradouro: ['', []],
+          cep: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+          localidade: ['', [Validators.required,]],
+          uf: ['', [Validators.required,]],
+          bairro: ['', [Validators.required,]],
+          logradouro: ['', [Validators.required,]],
         })
 
       })

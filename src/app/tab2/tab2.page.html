@@ -47,7 +47,7 @@
               <ion-label>Supplier</ion-label>
               <ion-select formControlName="id" placeholder="Select a Supplier" okText="Selecionar" cancelText="Cancelar">
                 <ion-content  *ngFor="let supplier of suppliers">
-                  <ion-select-option value="{{supplier.corporateName}}" selected>{{supplier.corporateName}}</ion-select-option>
+                  <ion-select-option value="{{supplier.id}}" selected>{{supplier.corporateName}}</ion-select-option>
                 </ion-content>
               </ion-select>
             </ion-item>

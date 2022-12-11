@@ -7,43 +7,19 @@
       "percentage": 1,
       "salePrice": "1.01",
       "supplier": {
-        "corporateName": "LOREM",
-        "cnpj": "LOREM",
-        "contact": {
-          "email": "LOREM",
-          "cellphone": "LOREM"
-        },
-        "address": {
-          "cep": "24230-541",
-          "localidade": "Niterói",
-          "uf": "RJ",
-          "bairro": "Icaraí",
-          "logradouro": "Rua Joaquim Távora"
-        }
-      },
-      "id": 1
-    }
-  ],
-  "product-2": [
-    {
-      "productName": "LOREM",
-      "quantity": 1,
-      "purchasePrice": 1,
-      "percentage": 1,
-      "salePrice": "1.01",
-      "supplier": {
-        "id": "DANIEL"
+        "id": "1",
+        "corporateName": "lorem"
       },
       "id": 1
     }
   ],
   "supplier": [
     {
-      "corporateName": "ISAQUE",
-      "cnpj": "LOREM",
+      "corporateName": "lorem",
+      "cnpj": "lorem",
       "contact": {
-        "email": "LOREM",
-        "cellphone": "LOREM"
+        "email": "lorem@lorem",
+        "cellphone": "(21)98012-6230"
       },
       "address": {
         "cep": "24230-541",
@@ -53,22 +29,6 @@
         "logradouro": "Rua Joaquim Távora"
       },
       "id": 1
-    },
-    {
-      "corporateName": "DANIEL",
-      "cnpj": "LOREM",
-      "contact": {
-        "email": "LOREM",
-        "cellphone": "LOREM"
-      },
-      "address": {
-        "cep": "24230-500",
-        "localidade": "Niterói",
-        "uf": "RJ",
-        "bairro": "Icaraí",
-        "logradouro": "Rua Maria Balbina Fortes"
-      },
-      "id": 2
     }
   ]
 }
