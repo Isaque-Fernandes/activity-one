@@ -5,12 +5,18 @@ ion-grid {
   }
   
   ion-row:first-child {
-    background-color: #e91e63;
+    background-color: rgba(128, 128, 128, 0.527);
     font-weight: bold;
+    color: honeydew;
+  }
+
+  ion-row{
+    background-color: silver;
+    color: black;
   }
   
   ion-col {
-    border: 1px solid white;
+    border: 1px solid black;
     border-bottom: 0;
     border-right: 0;
     text-align: center;

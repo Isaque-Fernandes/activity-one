@@ -1,4 +1,34 @@
 {
-  "product": [],
-  "supplier": []
+  "product": [
+    {
+      "productName": "APPLE",
+      "quantity": 1,
+      "purchasePrice": 1,
+      "percentage": 1,
+      "salePrice": "1.01",
+      "supplier": {
+        "id": "1",
+        "corporateName": "Eletrolux"
+      },
+      "id": 1
+    }
+  ],
+  "supplier": [
+    {
+      "corporateName": "Eletrolux",
+      "cnpj": "12.123.123/1234-12",
+      "contact": {
+        "email": "lorem@lorem.com",
+        "cellphone": "(21)98012-6230"
+      },
+      "address": {
+        "cep": "24230-500",
+        "localidade": "Niterói",
+        "uf": "RJ",
+        "bairro": "Icaraí",
+        "logradouro": "Rua Maria Balbina Fortes"
+      },
+      "id": 1
+    }
+  ]
 }
