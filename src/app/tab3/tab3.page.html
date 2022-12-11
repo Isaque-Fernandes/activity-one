@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      List
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,60 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Product List</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col sizeXs="2" sizeMd="1" sizeXl="1">Id</ion-col>
+        <ion-col sizeXs="6" sizeMd="4" sizeXl="1">Product</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">Buy Price</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">Percent</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">Sale Price</ion-col>
+
+        <ion-col class="hidden-xs-col hidden-xl-col" sizeXl="1">Supplier</ion-col>
+        <ion-col class="hidden-xs-col hidden-xl-col" sizeXl="2">CNPJ</ion-col>
+        <ion-col class="hidden-xs-col hidden-xl-col">cellphone</ion-col>
+        <ion-col class="hidden-xs-col hidden-xl-col" sizeXl="2">Email</ion-col>
+
+        <ion-col class="hidden-xs-col">cep</ion-col>
+        <ion-col class="hidden-xs-col">localidade</ion-col>
+        <ion-col class="hidden-xs-col">uf</ion-col>
+        <ion-col class="hidden-xs-col">bairro</ion-col>
+        <ion-col class="hidden-xs-col">logradouro</ion-col>
+
+        <ion-col sizeXs="4" sizeMd="1" sizeXl="1"
+          class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col">Data</ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let product of products">
+        <ion-col sizeXs="2" sizeMd="1" sizeXl="1">{{product.id}}</ion-col>
+        <ion-col sizeXs="6" sizeMd="4" sizeXl="1">{{product.productName}}</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">{{product.purchasePrice}}</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">{{product.percentage}}</ion-col>
+        <ion-col class="hidden-xs-col hidden-md-col" sizeMd="2" sizeXl="1">{{product.salePrice}}</ion-col>
+
+        <ion-col class="hidden-xs-col hidden-xl-col" sizeXl="1">{{product.supplier.corporateName}}</ion-col>
+        <ion-col class="hidden-xs-col hidden-xl-col" sizeXl="2">{{product.supplier.cnpj}}</ion-col>
+
+        <ion-col class="hidden-xs-col hidden-xl-col">{{product.supplier.address.cep}}</ion-col>
+        <ion-col class="hidden-xs-col hidden-xl-col" sizeXl="2">{{product.supplier.contact.email}}</ion-col>
+
+        <ion-col class="hidden-xs-col ">{{product.supplier.address.localidade}}</ion-col>
+        <ion-col class="hidden-xs-col ">{{product.supplier.address.uf}}</ion-col>
+        <ion-col class="hidden-xs-col ">{{product.supplier.address.bairro}}</ion-col>
+        <ion-col class="hidden-xs-col ">{{product.supplier.address.bairro}}</ion-col>
+        <ion-col class="hidden-xs-col ">{{product.supplier.address.logradouro}}</ion-col>
+
+        <ion-col sizeXs="4" sizeMd="1" sizeXl="1"
+          class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col btn-modal" (click)="openModal(product.id)">
+          Show
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-content>
+
 </ion-content>

@@ -1,20 +1,27 @@
-import { IonicModule } from '@ionic/angular';
+import { Tab3Page } from './tab3.page';
+import { Tab3PageRoutingModule } from './tab3-routing.module';
 import { NgModule } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Tab3Page } from './tab3.page';
-import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+import { ModalProductModule } from '../modal-product/modal-product.module';
+import { HttpClientModule } from '@angular/common/http';
 
-import { Tab3PageRoutingModule } from './tab3-routing.module';
+import { CorreiosService } from '../service/correios.service';
+import { ProductService } from '../service/product.service';
+
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    ExploreContainerComponentModule,
-    Tab3PageRoutingModule
+    Tab3PageRoutingModule,
+
+    HttpClientModule,
+    ModalProductModule
   ],
-  declarations: [Tab3Page]
+  declarations: [Tab3Page],
+  providers: [CorreiosService, ProductService]
 })
 export class Tab3PageModule {}
