@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { CorreiosService } from '../service/correios.service';
 import { ProductService } from '../service/product.service';
 
 import { Product } from '../model/product.model';
-import { Address } from '../model/address.model';
+import { Supplier } from '../model/supplier.model';
+import { SupplierService } from '../service/supplier.service';
 
 @Component({
   selector: 'app-tab2',
@@ -18,18 +18,29 @@ export class Tab2Page implements OnInit {
   productForm!: FormGroup;
   product!: Product;
 
+  suppliers!: Supplier[];
+
   notificationMessage !: string;
   editable: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    private correiosService: CorreiosService,
     private productService: ProductService,
-    private router: Router,
+    private supplierService: SupplierService,
     private activatedRoute: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
+    this.supplierService.list().subscribe({
+      next: (rs) => {
+        this.suppliers = rs;
+      },
+      error: (err) => {
+        console.error(err);
+      },
+    })
+
     this.productForm = this.formBuilder.group({
       productName: ['', []],
       quantity: ['', []],
@@ -38,22 +49,8 @@ export class Tab2Page implements OnInit {
       salePrice: ['', []],
 
       supplier: this.formBuilder.group({
-        corporateName: ['', []],
-        cnpj: ['', []],
-
-        contact: this.formBuilder.group({
-          email: ['', []],
-          cellphone: ['', []],
-        }),
-
-        address: this.formBuilder.group({
-          cep: ['', []],
-          localidade: ['', []],
-          uf: ['', []],
-          bairro: ['', []],
-          logradouro: ['', []],
-        })
-
+        id: ['', []],
+        corporateName: ['', []]
       })
     })
 
@@ -76,6 +73,10 @@ export class Tab2Page implements OnInit {
   register(): void {
     const product = this.productForm.getRawValue() as Product;
 
+    const supplier = this.productForm.getRawValue() as Supplier;
+    
+    product.supplier.corporateName = supplier.corporateName;
+
     this.productService.register(product).subscribe({
       next: () => {
         this.productForm.reset();
@@ -97,22 +98,6 @@ export class Tab2Page implements OnInit {
     })
   }
 
-  getCep() {
-    const cep: string = this.productForm.get('supplier')?.get('address')?.get('cep')?.value;
-
-    this.correiosService.requestCEP(cep).subscribe({
-      next: (result: Address) => {
-        this.productForm?.get('supplier')?.get('address')?.patchValue({
-          cep: result.cep,
-          localidade: result.localidade,
-          uf: result.uf,
-          bairro: result.bairro,
-          logradouro: result.logradouro,
-        })
-      },
-      error: (error) => { console.error(error); }
-    })
-  }
 
   loadForm() {
     this.productForm.patchValue({
@@ -121,25 +106,11 @@ export class Tab2Page implements OnInit {
       percentage: this.product.percentage,
       quantity: this.product.quantity,
       salePrice: this.product.salePrice,
-
     })
 
-    this.productForm.get?.('supplier')?.patchValue({
+    this.productForm?.get('supplier')?.patchValue({
+      id: this.product.supplier.id,
       corporateName: this.product.supplier.corporateName,
-      cnpj: this.product.supplier.cnpj,
-    })
-
-    this.productForm.get?.('supplier')?.get('contact')?.patchValue({
-      cellphone: this.product.supplier.contact.cellphone,
-      email: this.product.supplier.contact.email,
-    })
-
-    this.productForm.get?.('supplier')?.get('address')?.patchValue({
-      cep: this.product.supplier.address.cep,
-      localidade: this.product.supplier.address.localidade,
-      uf: this.product.supplier.address.uf,
-      bairro: this.product.supplier.address.bairro,
-      logradouro: this.product.supplier.address.logradouro,
     })
   }
 

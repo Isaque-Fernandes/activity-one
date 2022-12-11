@@ -1,23 +1,21 @@
-import { Component } from '@angular/core';
-import { ModalProductComponent } from '../modal-product/modal-product.component';
+import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-
-import { ProductService } from '../service/product.service';
-
-import { Product } from '../model/product.model';
+import { ModalSupplierComponent } from '../modal-supplier/modal-supplier.component';
+import { Supplier } from '../model/supplier.model';
+import { SupplierService } from '../service/supplier.service';
 
 @Component({
-  selector: 'app-tab3',
-  templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss']
+  selector: 'app-tab5',
+  templateUrl: './tab5.page.html',
+  styleUrls: ['./tab5.page.scss'],
 })
-export class Tab3Page {
+export class Tab5Page{
 
-  products !: Product[];
+  
+  suppliers !: Supplier[];
 
   constructor(
-    private productService: ProductService,
-
+    private supplierService: SupplierService,
     private modalCtrl: ModalController,
   ) { }
 
@@ -26,22 +24,22 @@ export class Tab3Page {
   }
 
   list() {
-    this.productService.list().subscribe({
-      next: (rs) => { this.products = rs },
+    this.supplierService.list().subscribe({
+      next: (rs) => { this.suppliers = rs },
       error: (err) => { console.error(err) },
     })
   }
 
   async openModal(id: number) {
-    const product = this.products.filter(product => product.id == id)[0];
+    const supplier = this.suppliers.filter(supplier => supplier.id == id)[0];
 
     const modal = await this.modalCtrl.create({
       /** Create a component */
-      component: ModalProductComponent,
+      component: ModalSupplierComponent,
 
       /** Create a property */
       componentProps: {
-        'product': product
+        'supplier': supplier
       }
     })
 

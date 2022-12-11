@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { CorreiosService } from '../service/correios.service';
 import { ProductService } from '../service/product.service';
+import { SupplierService } from '../service/supplier.service';
 
 @NgModule({
   imports: [
@@ -18,8 +19,9 @@ import { ProductService } from '../service/product.service';
     
     ReactiveFormsModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   declarations: [Tab2Page],
-  providers: [CorreiosService, ProductService]
+  providers: [CorreiosService, ProductService, SupplierService]
 })
 export class Tab2PageModule {}

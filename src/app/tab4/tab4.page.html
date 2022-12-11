@@ -1,0 +1,93 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      {{editable ? 'Update' : 'Register'}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{editable ? 'Product Update' : 'Product Register'}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <form [formGroup]="supplierForm" fullscreen>
+      <ion-list lines="full" class="ion-no-margin ion-no-padding">
+
+        <ion-item-group>
+          <ion-item-divider>
+            <ion-label>Data</ion-label>
+          </ion-item-divider>
+          <ion-list>
+            <ion-item>
+              <ion-label for="" position="stacked">Corporate Name</ion-label>
+              <ion-input type="text" formControlName="corporateName" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label for="" position="stacked">CNPJ </ion-label>
+              <ion-input type="text" formControlName="cnpj" required></ion-input>
+            </ion-item>
+
+            <ion-item-group>
+              <ion-item-divider>
+                <ion-label>Contact</ion-label>
+              </ion-item-divider>
+              <ion-list formGroupName="contact">
+                <ion-item>
+                  <ion-label for="" position="stacked">Email </ion-label>
+                  <ion-input type="text" formControlName="email" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label for="" position="stacked">Cellphone</ion-label>
+                  <ion-input type="text" formControlName="cellphone" required></ion-input>
+                </ion-item>
+              </ion-list>
+            </ion-item-group>
+
+            <ion-item-group>
+              <ion-item-divider>
+                <ion-label>Address</ion-label>
+              </ion-item-divider>
+              <ion-list formGroupName="address">
+                <ion-item>
+                  <ion-label for="" position="stacked">CEP</ion-label>
+                  <ion-input type="text" formControlName="cep" (change)="getCep()" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label for="" position="stacked">Locality </ion-label>
+                  <ion-input type="text" formControlName="localidade" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label for="" position="stacked">UF </ion-label>
+                  <ion-input type="text" formControlName="uf" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label for="" position="stacked">District </ion-label>
+                  <ion-input type="text" formControlName="bairro" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label for="" position="stacked">Public Place </ion-label>
+                  <ion-input type="text" formControlName="logradouro" required></ion-input>
+                </ion-item>
+              </ion-list>
+            </ion-item-group>
+
+          </ion-list>
+        </ion-item-group>
+
+      </ion-list>
+
+      <div class="ion-padding">
+        <ion-button expand="block" [disabled]="supplierForm.invalid" type="submit"
+          (click)=" editable ? update() : register();">
+          {{editable ? 'Update' : 'Register'}}
+        </ion-button>
+      </div>
+    </form>
+
+  </ion-content>
+
+</ion-content>

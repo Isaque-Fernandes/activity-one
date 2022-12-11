@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Modal</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>Data</ion-label>
+    </ion-item-divider>
+    <ion-list>
+
+      <ion-item>
+        <ion-note>Corporate Name</ion-note>
+        <ion-label>
+          {{supplier.corporateName}}
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-note>CNPJ</ion-note>
+        <ion-label>
+          {{supplier.cnpj}}
+        </ion-label>
+      </ion-item>
+
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label>Contact</ion-label>
+        </ion-item-divider>
+        <ion-list>
+
+          <ion-item>
+            <ion-note>Cellphone</ion-note>
+            <ion-label>
+              {{supplier.contact.cellphone}}
+            </ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-note>Email</ion-note>
+            <ion-label>
+              {{supplier.contact.email}}
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-item-group>
+
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-label>Address</ion-label>
+        </ion-item-divider>
+        <ion-list>
+
+          <ion-item>
+            <ion-note>CEP</ion-note>
+            <ion-label>
+              {{supplier.address.cep}}
+            </ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-note>Locality</ion-note>
+            <ion-label>
+              {{supplier.address.localidade}}
+            </ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-note>District</ion-note>
+            <ion-label>
+              {{supplier.address.bairro}}
+            </ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-note>UF</ion-note>
+            <ion-label>
+              {{supplier.address.uf}}
+            </ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-note>Public Place</ion-note>
+            <ion-label>
+              {{supplier.address.logradouro}}
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-item-group>
+
+    </ion-list>
+  </ion-item-group>
+
+  <ion-row class="ion-justify-content-between">
+    <ion-button color="tertiary" size="small" shape="round" (click)="redirectWithSupplierId(supplier.id)">
+      Update
+      <ion-icon name="pencil-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button color="danger" size="small" shape="round" (click)="delete(supplier.id)">
+      Delete
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-button>
+  </ion-row>
+
+</ion-content>

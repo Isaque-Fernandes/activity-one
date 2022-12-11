@@ -1,24 +1,21 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
-import { Product } from '../model/product.model';
-import { ProductService } from '../service/product.service';
-
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
+import { Supplier } from '../model/supplier.model';
+import { SupplierService } from '../service/supplier.service';
 
 @Component({
-  selector: 'app-modal-product',
-  templateUrl: './modal-product.component.html',
-  styleUrls: ['./modal-product.component.scss'],
+  selector: 'app-modal-supplier',
+  templateUrl: './modal-supplier.component.html',
+  styleUrls: ['./modal-supplier.component.scss'],
 })
-export class ModalProductComponent implements OnInit {
+export class ModalSupplierComponent implements OnInit {
 
-  @Input() product!: Product;
+  @Input() supplier!: Supplier;
 
   constructor(
     private modalCtrl: ModalController,
-    private productService: ProductService,
-
+    private supplierService: SupplierService,
     private router: Router,
     private alertController: AlertController
   ) { }
@@ -30,14 +27,14 @@ export class ModalProductComponent implements OnInit {
     return this.modalCtrl.dismiss(null, 'cancel');
   }
   
-  redirectWithProductId(id: number) {
-    this.router.navigate(['/tabs/tab2', id]);
+  redirectWithSupplierId(id: number) {
+    this.router.navigate(['/tabs/tab4', id]);
     this.modalCtrl.dismiss(null, 'cancel');
   }
 
   delete(id: number) {
     this.presentAlert()
-    this.productService.delete(id).subscribe({
+    this.supplierService.delete(id).subscribe({
       next: () => { this.modalCtrl.dismiss(null, 'cancel'); },
       error: (err) => { console.error(err); }
     })
@@ -46,7 +43,7 @@ export class ModalProductComponent implements OnInit {
   async presentAlert() {
     const alert = await this.alertController.create({
       header: 'Alert',
-      subHeader: 'Product Delected',
+      subHeader: 'Supplier Delected',
       buttons: ['OK'],
     });
 

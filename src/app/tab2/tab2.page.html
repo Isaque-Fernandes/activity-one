@@ -26,7 +26,7 @@
           </ion-item>
           <ion-item>
             <ion-label for="" position="stacked">Quantity </ion-label>
-            <ion-input type="text" formControlName="quantity" required></ion-input>
+            <ion-input type="number" formControlName="quantity" required></ion-input>
           </ion-item>
           <ion-item>
             <ion-label for="" position="stacked">Purchase Price</ion-label>
@@ -40,67 +40,19 @@
             <ion-label for="" position="stacked">Sale Price</ion-label>
             <ion-input type="number" formControlName="salePrice" readonly required></ion-input>
           </ion-item>
-        </ion-item-group>
 
-        <ion-item-group>
-          <ion-item-divider>
-            <ion-label>Suplier Data</ion-label>
-          </ion-item-divider>
-          <ion-list formGroupName="supplier">
+
+          <ion-item-group formGroupName="supplier">
             <ion-item>
-              <ion-label for="" position="stacked">Corporate Name</ion-label>
-              <ion-input type="text" formControlName="corporateName" required></ion-input>
+              <ion-label>Supplier</ion-label>
+              <ion-select formControlName="id" placeholder="Select a Supplier" okText="Selecionar" cancelText="Cancelar">
+                <ion-content  *ngFor="let supplier of suppliers">
+                  <ion-select-option value="{{supplier.corporateName}}" selected>{{supplier.corporateName}}</ion-select-option>
+                </ion-content>
+              </ion-select>
             </ion-item>
-            <ion-item>
-              <ion-label for="" position="stacked">CNPJ </ion-label>
-              <ion-input type="text" formControlName="cnpj" required></ion-input>
-            </ion-item>
+          </ion-item-group>
 
-            <ion-item-group>
-              <ion-item-divider>
-                <ion-label>Supplier Contact</ion-label>
-              </ion-item-divider>
-              <ion-list formGroupName="contact">
-                <ion-item>
-                  <ion-label for="" position="stacked">Email </ion-label>
-                  <ion-input type="text" formControlName="email" required></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label for="" position="stacked">Cellphone</ion-label>
-                  <ion-input type="text" formControlName="cellphone" required></ion-input>
-                </ion-item>
-              </ion-list>
-              </ion-item-group>
-     
-            <ion-item-group>
-              <ion-item-divider>
-                <ion-label>Supplier Address</ion-label>
-              </ion-item-divider>
-              <ion-list formGroupName="address">
-                <ion-item>
-                  <ion-label for="" position="stacked">CEP</ion-label>
-                  <ion-input type="text" formControlName="cep" (change)="getCep()" required></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label for="" position="stacked">Locality </ion-label>
-                  <ion-input type="text" formControlName="localidade" required></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label for="" position="stacked">UF </ion-label>
-                  <ion-input type="text" formControlName="uf" required></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label for="" position="stacked">District </ion-label>
-                  <ion-input type="text" formControlName="bairro" required></ion-input>
-                </ion-item>
-                <ion-item>
-                  <ion-label for="" position="stacked">Public Place </ion-label>
-                  <ion-input type="text" formControlName="logradouro" required></ion-input>
-                </ion-item>
-              </ion-list>
-            </ion-item-group>
-
-          </ion-list>
         </ion-item-group>
 
       </ion-list>
