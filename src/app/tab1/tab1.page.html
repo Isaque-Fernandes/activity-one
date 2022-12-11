@@ -19,12 +19,12 @@
   </ion-card-header>
 
   <ion-card-content>
-    <ion-card *ngFor="let product of products">
+    <ion-card *ngFor="let product of products" color="dark">
       <ion-card-header>
-        <ion-card-title>{{product.productName}}</ion-card-title>
-        <ion-card-subtitle>Supplier: {{product.supplier.corporateName}}</ion-card-subtitle>
-        <ion-card-subtitle>Quantity: {{product.quantity}}</ion-card-subtitle>
-        <ion-card-subtitle>Value R$: {{product.salePrice}}</ion-card-subtitle>
+        <ion-card-title style="text-decoration: underline;"><b>{{product.productName}}</b></ion-card-title>
+        <ion-card-subtitle><b>Supplier:</b> {{product.supplier.corporateName}}</ion-card-subtitle>
+        <ion-card-subtitle><b>Quantity:</b> {{product.quantity}}</ion-card-subtitle>
+        <ion-card-subtitle><b>Value:</b>  R$ {{product.salePrice}}</ion-card-subtitle>
       </ion-card-header>
     </ion-card>
   </ion-card-content>
