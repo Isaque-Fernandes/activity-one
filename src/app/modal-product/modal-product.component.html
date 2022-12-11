@@ -8,40 +8,41 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-
   <ion-item-group>
     <ion-item-divider>
       <ion-label>Product Data</ion-label>
     </ion-item-divider>
 
-    <ion-item>
-      <ion-note>Quantity</ion-note>
-      <ion-label>
-        {{product.quantity}}
-      </ion-label>
-    </ion-item>
+    <ion-list>
+      <ion-item>
+        <ion-note slot="start">Quantity:</ion-note>
+        <ion-label>
+          {{product.quantity}}
+        </ion-label>
+      </ion-item>
 
-    <ion-item>
-      <ion-note>Purchase Price</ion-note>
-      <ion-label>
-        {{product.purchasePrice}}
-      </ion-label>
-    </ion-item>
+      <ion-item>
+        <ion-note slot="start">Purchase Price: </ion-note>
+        <ion-label>
+          {{product.purchasePrice}}
+        </ion-label>
+      </ion-item>
 
-    <ion-item>
-      <ion-note>Percentage</ion-note>
-      <ion-label>
-        {{product.percentage}}
-      </ion-label>
-    </ion-item>
+      <ion-item>
+        <ion-note slot="start">Percentage: </ion-note>
+        <ion-label>
+          {{product.percentage}}
+        </ion-label>
+      </ion-item>
 
-    <ion-item>
-      <ion-note>Sale Price</ion-note>
-      <ion-label>
-        {{product.salePrice}}
-      </ion-label>
-    </ion-item>
+      <ion-item>
+        <ion-note slot="start">Sale Price: </ion-note>
+        <ion-label>
+          {{product.salePrice}}
+        </ion-label>
+      </ion-item>
 
+    </ion-list>
 
     <ion-item-group>
       <ion-item-divider>
@@ -49,17 +50,17 @@
       </ion-item-divider>
 
       <ion-item>
-        <ion-note>Name</ion-note>
+        <ion-note slot="start">Name: </ion-note>
         <ion-label>
           {{product.supplier.corporateName}}
         </ion-label>
       </ion-item>
-      
-      </ion-item-group>
+
+    </ion-item-group>
 
   </ion-item-group>
-  
-  <ion-row class="ion-justify-content-between">
+
+  <ion-row class="ion-justify-content-between ion-padding">
     <ion-button color="tertiary" size="small" shape="round" (click)="redirectWithProductId(product.id)">
       Update
       <ion-icon name="pencil-outline"></ion-icon>

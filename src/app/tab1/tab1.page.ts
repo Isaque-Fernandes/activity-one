@@ -12,7 +12,7 @@ export class Tab1Page {
   products!: Product[];
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
   ) { }
 
   public ionViewWillEnter(): void {

@@ -1,77 +1,75 @@
 ion-grid {
-    --ion-grid-column-padding: 10px;
-    border-collapse: collapse;
-    border-style: hidden;
-  }
-  
-  ion-row:first-child {
-    background-color: #e91e63;
-    font-weight: bold;
-  }
-  
-  ion-col {
-    border: 1px solid white;
-    // border-bottom: 0;
-    // border-right: 0;
-    text-align: center;
-  }
-  
-  ion-col:last-child {
-    border-right: 1px solid white;
-  }
-  
-  ion-row:last-child {
-    border-bottom: 1px solid white;
-  }
-  
-  .btn-modal {
-    text-transform: capitalize;
-  }
+  --ion-grid-column-padding: 10px;
+  border-collapse: collapse;
+  border-style: hidden;
+}
 
-  .btn-modal:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
+ion-row:first-child {
+  background-color: #e91e63;
+  font-weight: bold;
+}
+
+ion-col {
+  border: 1px solid white;
+  border-bottom: 0;
+  border-right: 0;
+  text-align: center;
+}
+
+ion-col:last-child {
+  border-right: 1px solid white;
+}
+
+ion-row:last-child {
+  border-bottom: 1px solid white;
+}
+
+.btn-modal {
+  text-transform: capitalize;
+}
+
+.btn-modal:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
 
 
-  @media screen and (min-width: 320px) and (max-width: 767px){
-    .hidden-xs-col {
-      display: none;
-    }
-
-    .hidden-sm-col {
-      display: none;
-    }
-
-    .hidden-md-col {
-      display: none;
-    }
-
-    .hidden-lg-col {
-      display: none;
-    }
-
-    .hidden-xl-col {
-      display: none;
-    }
-
-    .show-xs-col {
-      display: block;
-    }
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .hidden-xs-col {
+    display: none;
   }
 
-  
-
-    @media screen and (min-width: 768px){
-    .hidden-xs-col {
-      display: none;
-    }
-
-    .hidden-md-col {
-      display: block;
-    }
-
-    .show-xs-col {
-      display: none;
-    }
+  .hidden-sm-col {
+    display: none;
   }
+
+  .hidden-md-col {
+    display: none;
+  }
+
+  .hidden-lg-col {
+    display: none;
+  }
+
+  .hidden-xl-col {
+    display: none;
+  }
+
+  .show-xs-col {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hidden-xs-col {
+    display: none;
+  }
+
+  .hidden-md-col {
+    display: block;
+  }
+
+  .show-xs-col {
+    display: none;
+  }
+}
