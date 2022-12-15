@@ -74,8 +74,10 @@ export class Tab4Page implements OnInit {
     })
   }
 
-  register(): void {
-    const supplier = this.supplierForm.getRawValue() as Supplier;
+  register(values: any): void {
+    // const supplier = this.supplierForm.getRawValue() as Supplier;
+
+    let supplier: Supplier = {...values};
 
     this.supplierService.register(supplier).subscribe({
       next: () => {
@@ -88,40 +90,40 @@ export class Tab4Page implements OnInit {
   }
 
   getCep() {
-    const cep: string = this.supplierForm.get('address')?.get('cep')?.value;
+  //   const cep: string = this.supplierForm.get('address')?.get('cep')?.value;
 
-    this.correiosService.requestCEP(cep).subscribe({
-      next: (result: Address) => {
-        this.supplierForm?.get('address')?.patchValue({
-          cep: result.cep,
-          localidade: result.localidade,
-          uf: result.uf,
-          bairro: result.bairro,
-          logradouro: result.logradouro,
-        })
-      },
-      error: (error) => { console.error(error); }
-    })
+  //   this.correiosService.requestCEP(cep).subscribe({
+  //     next: (result: Address) => {
+  //       this.supplierForm?.get('address')?.patchValue({
+  //         cep: result.cep,
+  //         localidade: result.localidade,
+  //         uf: result.uf,
+  //         bairro: result.bairro,
+  //         logradouro: result.logradouro,
+  //       })
+  //     },
+  //     error: (error) => { console.error(error); }
+  //   })
   }
 
   loadForm() {
-    this.supplierForm.patchValue({
-      corporateName: this.supplier.corporateName,
-      cnpj: this.supplier.cnpj,
-    })
+  //   this.supplierForm.patchValue({
+  //     corporateName: this.supplier.corporateName,
+  //     cnpj: this.supplier.cnpj,
+  //   })
 
-    this.supplierForm?.get('contact')?.patchValue({
-      cellphone: this.supplier.contact.cellphone,
-      email: this.supplier.contact.email,
-    })
+  //   this.supplierForm?.get('contact')?.patchValue({
+  //     cellphone: this.supplier.contact.cellphone,
+  //     email: this.supplier.contact.email,
+  //   })
 
-    this.supplierForm?.get('address')?.patchValue({
-      cep: this.supplier.address.cep,
-      localidade: this.supplier.address.localidade,
-      uf: this.supplier.address.uf,
-      bairro: this.supplier.address.bairro,
-      logradouro: this.supplier.address.logradouro,
-    })
+  //   this.supplierForm?.get('address')?.patchValue({
+  //     cep: this.supplier.address.cep,
+  //     localidade: this.supplier.address.localidade,
+  //     uf: this.supplier.address.uf,
+  //     bairro: this.supplier.address.bairro,
+  //     logradouro: this.supplier.address.logradouro,
+  //   })
   }
 
   update() {

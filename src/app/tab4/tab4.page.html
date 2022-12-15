@@ -82,7 +82,7 @@
 
       <div class="ion-padding">
         <ion-button expand="block" [disabled]="supplierForm.invalid" type="submit"
-          (ngSubmit)=" editable ? update() : register();">
+          (ngSubmit)=" editable ? update() : register(supplierForm.value);">
           {{editable ? 'Update' : 'Register'}}
         </ion-button>
       </div>
