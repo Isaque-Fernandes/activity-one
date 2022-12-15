@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { ModalSupplierComponent } from './modal-supplier.component';
 
-
-
 @NgModule({
   declarations: [ModalSupplierComponent],
   imports: [

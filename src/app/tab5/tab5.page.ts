@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ModalSupplierComponent } from '../modal-supplier/modal-supplier.component';
 import { Supplier } from '../model/supplier.model';
+import { FirebaseSupplierService } from '../service/firebase-supplier.service';
 import { SupplierService } from '../service/supplier.service';
 
 @Component({
@@ -9,14 +10,14 @@ import { SupplierService } from '../service/supplier.service';
   templateUrl: './tab5.page.html',
   styleUrls: ['./tab5.page.scss'],
 })
-export class Tab5Page{
+export class Tab5Page {
 
-  
   suppliers !: Supplier[];
 
   constructor(
     private supplierService: SupplierService,
     private modalCtrl: ModalController,
+    private firebase: FirebaseSupplierService
   ) { }
 
   public ionViewWillEnter(): void {
@@ -24,10 +25,12 @@ export class Tab5Page{
   }
 
   list() {
-    this.supplierService.list().subscribe({
-      next: (rs) => { this.suppliers = rs },
+    this.firebase.list().subscribe({
+      next: (rs) => {
+        this.suppliers = rs;
+      },
       error: (err) => { console.error(err) },
-    })
+    });
   }
 
   async openModal(id: string) {

@@ -4,4 +4,5 @@ export class Address{
     uf!: string;
     bairro!: string;
     logradouro!: string;
+    
 }
