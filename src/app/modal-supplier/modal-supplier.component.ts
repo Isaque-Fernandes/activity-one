@@ -27,12 +27,12 @@ export class ModalSupplierComponent implements OnInit {
     return this.modalCtrl.dismiss(null, 'cancel');
   }
   
-  redirectWithSupplierId(id: number) {
+  redirectWithSupplierId(id: string) {
     this.router.navigate(['/tabs/tab4', id]);
     this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  delete(id: number) {
+  delete(id: string) {
     this.presentAlert()
     this.supplierService.delete(id).subscribe({
       next: () => { this.modalCtrl.dismiss(null, 'cancel'); },

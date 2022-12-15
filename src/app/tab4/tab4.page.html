@@ -14,7 +14,7 @@
   </ion-header>
 
   <ion-content>
-    <form [formGroup]="supplierForm" fullscreen>
+    <form [formGroup]="supplierForm" fullscreen #supplierFormDirective="ngForm">
       <ion-list lines="full" class="ion-no-margin ion-no-padding">
 
         <ion-item-group>
@@ -35,14 +35,14 @@
               <ion-item-divider>
                 <ion-label>Contact</ion-label>
               </ion-item-divider>
-              <ion-list formGroupName="contact">
+              <ion-list formControlName="contact">
                 <ion-item>
                   <ion-label for="" position="stacked">Email </ion-label>
-                  <ion-input type="text" formControlName="email" required></ion-input>
+                  <ion-input type="text" required></ion-input>
                 </ion-item>
                 <ion-item>
                   <ion-label for="" position="stacked">Cellphone</ion-label>
-                  <ion-input type="text" formControlName="cellphone" required></ion-input>
+                  <ion-input type="text" required></ion-input>
                 </ion-item>
               </ion-list>
             </ion-item-group>
@@ -51,26 +51,26 @@
               <ion-item-divider>
                 <ion-label>Address</ion-label>
               </ion-item-divider>
-              <ion-list formGroupName="address">
+              <ion-list formControlName="address">
                 <ion-item>
                   <ion-label for="" position="stacked">CEP</ion-label>
-                  <ion-input type="text" formControlName="cep" (change)="getCep()" required></ion-input>
+                  <ion-input type="text" (change)="getCep()" required></ion-input>
                 </ion-item>
                 <ion-item>
                   <ion-label for="" position="stacked">Locality </ion-label>
-                  <ion-input type="text" formControlName="localidade" required></ion-input>
+                  <ion-input type="text" required></ion-input>
                 </ion-item>
                 <ion-item>
                   <ion-label for="" position="stacked">UF </ion-label>
-                  <ion-input type="text" formControlName="uf" required></ion-input>
+                  <ion-input type="text" required></ion-input>
                 </ion-item>
                 <ion-item>
                   <ion-label for="" position="stacked">District </ion-label>
-                  <ion-input type="text" formControlName="bairro" required></ion-input>
+                  <ion-input type="text" required></ion-input>
                 </ion-item>
                 <ion-item>
                   <ion-label for="" position="stacked">Public Place </ion-label>
-                  <ion-input type="text" formControlName="logradouro" required></ion-input>
+                  <ion-input type="text" required></ion-input>
                 </ion-item>
               </ion-list>
             </ion-item-group>
@@ -82,7 +82,7 @@
 
       <div class="ion-padding">
         <ion-button expand="block" [disabled]="supplierForm.invalid" type="submit"
-          (click)=" editable ? update() : register();">
+          (ngSubmit)=" editable ? update() : register();">
           {{editable ? 'Update' : 'Register'}}
         </ion-button>
       </div>

@@ -29,7 +29,7 @@ export class SupplierService {
     return this.http.get<Supplier[]>(`${environment.JSON_SERVER_URL}/supplier`);
   }
 
-  find(id: number): Observable<Supplier> {
+  find(id: string): Observable<Supplier> {
     return this.http.get<Supplier>(`${environment.JSON_SERVER_URL}/supplier/${id}`);
   }
 
@@ -37,7 +37,7 @@ export class SupplierService {
     return this.http.put(`${environment.JSON_SERVER_URL}/supplier/${supplier.id}`, supplier, HttpOptions);
   }
 
-  delete(id: number): Observable<any> {
+  delete(id: string): Observable<any> {
     return this.http.delete(`${environment.JSON_SERVER_URL}/supplier/${id}`);
   }
 

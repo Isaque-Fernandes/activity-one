@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from '../model/address.model';
 import { Supplier } from '../model/supplier.model';
 import { CorreiosService } from '../service/correios.service';
 import { SupplierService } from '../service/supplier.service';
+import { FirebaseSupplierService } from '../service/firebase-supplier.service';
 
 @Component({
   selector: 'app-tab4',
@@ -12,6 +13,8 @@ import { SupplierService } from '../service/supplier.service';
   styleUrls: ['./tab4.page.scss'],
 })
 export class Tab4Page implements OnInit {
+
+  @ViewChild('supplierFormDirective') supplierFormDirective!: FormGroupDirective;
 
   supplierForm!: FormGroup;
   supplier!: Supplier;
@@ -25,30 +28,38 @@ export class Tab4Page implements OnInit {
     private supplierService: SupplierService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+
+    private firebaseService: FirebaseSupplierService
   ) { }
 
   ngOnInit(): void {
-    this.supplierForm = this.formBuilder.group({
-        corporateName: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ùÂ-û ]+$/)]],
-        cnpj: ['', [Validators.required, Validators.pattern(/\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}/)]],
-        contact: this.formBuilder.group({
-          email: ['', [Validators.required, Validators.email]],
-          cellphone: ['', [Validators.required, Validators.minLength(14), Validators.maxLength(14)]],
-        }),
+    this.supplierForm = new FormGroup({
+      'corporateName': new FormControl('', Validators.required),
+      'cnpj': new FormControl('', Validators.required),
+      'contact': new FormControl('', Validators.required),
+      'address': new FormControl('', Validators.required),
+    })
 
-        address: this.formBuilder.group({
-          cep: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
-          localidade: ['', [Validators.required,]],
-          uf: ['', [Validators.required,]],
-          bairro: ['', [Validators.required,]],
-          logradouro: ['', [Validators.required,]],
-        })
+    // this.supplierForm = this.formBuilder.group({
+    //     corporateName: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ùÂ-û ]+$/)]],
+    //     cnpj: ['', [Validators.required, Validators.pattern(/\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}/)]],
+    //     contact: this.formBuilder.group({
+    //       email: ['', [Validators.required, Validators.email]],
+    //       cellphone: ['', [Validators.required, Validators.minLength(14), Validators.maxLength(14)]],
+    //     }),
 
-      })
+    //     address: this.formBuilder.group({
+    //       cep: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+    //       localidade: ['', [Validators.required,]],
+    //       uf: ['', [Validators.required,]],
+    //       bairro: ['', [Validators.required,]],
+    //       logradouro: ['', [Validators.required,]],
+    //     })
 
+    //   })
 
     this.activatedRoute.paramMap.subscribe(params => {
-      const catchSupplierId = +params.get('id')!;
+      const catchSupplierId = params.get('id')!;
 
       if (catchSupplierId) {
         this.supplierService.find(catchSupplierId).subscribe({

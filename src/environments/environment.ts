@@ -6,6 +6,15 @@ export const environment = {
   production: false,
   JSON_SERVER_URL: 'http://localhost:3000',
   VIACEP_URL: 'https://viacep.com.br/ws/',
+  firebaseConfig: {
+    apiKey: "AIzaSyBEly-CGJrz7q17Cs2f6p8GUKKzlqsATms",
+    authDomain: "activity-two-5c10a.firebaseapp.com",
+    projectId: "activity-two-5c10a",
+    storageBucket: "activity-two-5c10a.appspot.com",
+    messagingSenderId: "83294523986",
+    appId: "1:83294523986:web:15f35d6ca8c926d90d458b",
+    measurementId: "G-ZX8PZRNYHX"
+  }
 };
 
 /*

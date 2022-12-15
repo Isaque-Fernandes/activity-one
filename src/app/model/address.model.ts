@@ -1,7 +1,7 @@
-export interface Address{
-    cep: string;
-    localidade: string;
-    uf: string;
-    bairro: string;
-    logradouro: string;
+export class Address{
+    cep!: string;
+    localidade!: string;
+    uf!: string;
+    bairro!: string;
+    logradouro!: string;
 }

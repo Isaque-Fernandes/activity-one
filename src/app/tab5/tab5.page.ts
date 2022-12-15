@@ -30,7 +30,7 @@ export class Tab5Page{
     })
   }
 
-  async openModal(id: number) {
+  async openModal(id: string) {
     const supplier = this.suppliers.filter(supplier => supplier.id == id)[0];
 
     const modal = await this.modalCtrl.create({
