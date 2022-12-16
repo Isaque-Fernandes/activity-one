@@ -5,6 +5,7 @@ import { Product } from '../model/product.model';
 import { ProductService } from '../service/product.service';
 
 import { AlertController } from '@ionic/angular';
+import { FirebaseProductService } from '../service/firebase-product.service';
 
 @Component({
   selector: 'app-modal-product',
@@ -17,10 +18,9 @@ export class ModalProductComponent implements OnInit {
 
   constructor(
     private modalCtrl: ModalController,
-    private productService: ProductService,
-
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private firebaseProduct: FirebaseProductService
   ) { }
 
   ngOnInit() { }
@@ -30,17 +30,15 @@ export class ModalProductComponent implements OnInit {
     return this.modalCtrl.dismiss(null, 'cancel');
   }
   
-  redirectWithProductId(id: number) {
+  redirectWithProductId(id: string) {
     this.router.navigate(['/tabs/tab2', id]);
     this.modalCtrl.dismiss(null, 'cancel');
   }
 
-  delete(id: number) {
-    this.presentAlert()
-    this.productService.delete(id).subscribe({
-      next: () => { this.modalCtrl.dismiss(null, 'cancel'); },
-      error: (err) => { console.error(err); }
-    })
+  delete(id: string) {
+    this.presentAlert();
+    this.firebaseProduct.delete(id);
+    this.modalCtrl.dismiss(null, 'cancel');
   }
 
   async presentAlert() {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from '../model/product.model';
+import { FirebaseProductService } from '../service/firebase-product.service';
 import { ProductService } from '../service/product.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class Tab1Page {
   products!: Product[];
 
   constructor(
-    private productService: ProductService,
+    private firebaseProduct: FirebaseProductService
   ) { }
 
   public ionViewWillEnter(): void {
@@ -20,7 +21,7 @@ export class Tab1Page {
   }
 
   list(): void {
-    this.productService.list().subscribe({
+    this.firebaseProduct.list().subscribe({
       next: (rs) => { this.products = rs },
       error: (err) => { console.error(err) },
     })

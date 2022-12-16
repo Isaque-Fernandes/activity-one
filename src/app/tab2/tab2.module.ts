@@ -9,6 +9,7 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { CorreiosService } from '../service/correios.service';
 import { ProductService } from '../service/product.service';
 import { SupplierService } from '../service/supplier.service';
+import { FirebaseProductService } from '../service/firebase-product.service';
 
 @NgModule({
   imports: [
@@ -22,6 +23,6 @@ import { SupplierService } from '../service/supplier.service';
     ReactiveFormsModule
   ],
   declarations: [Tab2Page],
-  providers: [CorreiosService, ProductService, SupplierService]
+  providers: [CorreiosService, ProductService, SupplierService, FirebaseProductService]
 })
 export class Tab2PageModule {}

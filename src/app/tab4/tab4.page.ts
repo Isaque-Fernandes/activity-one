@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from '../model/address.model';
 import { Supplier } from '../model/supplier.model';
 import { CorreiosService } from '../service/correios.service';
 import { FirebaseSupplierService } from '../service/firebase-supplier.service';
-import { SupplierService } from '../service/supplier.service';
+
 
 @Component({
   selector: 'app-tab4',
@@ -23,28 +23,26 @@ export class Tab4Page implements OnInit {
   editable: boolean = false;
 
   constructor(
-    private formBuilder: FormBuilder,
     private correiosService: CorreiosService,
-    private supplierService: SupplierService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private firebase: FirebaseSupplierService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.supplierForm = new FormGroup({
-      'corporateName': new FormControl('', Validators.required),
-      'cnpj': new FormControl('', Validators.required),
+      'corporateName': new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ùÂ-û ]+$/)]),
+      'cnpj': new FormControl('', [Validators.pattern(/\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}/)]),
       'contact': new FormGroup({
-        'cellphone': new FormControl('', Validators.required),
-        'email': new FormControl('', Validators.required),
+        'cellphone': new FormControl('', [Validators.required, Validators.minLength(14), Validators.maxLength(14)]),
+        'email': new FormControl('', [Validators.required, Validators.email]),
       }),
       'address': new FormGroup({
-        'cep': new FormControl('', Validators.required),
-        'localidade': new FormControl('', Validators.required),
-        'uf': new FormControl('', Validators.required),
-        'bairro': new FormControl('', Validators.required),
-        'logradouro': new FormControl('', Validators.required),
+        'cep': new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]),
+        'localidade': new FormControl('', [Validators.required,]),
+        'uf': new FormControl('', [Validators.required,]),
+        'bairro': new FormControl('', [Validators.required,]),
+        'logradouro': new FormControl('', [Validators.required,]),
       })
     })
 
@@ -67,10 +65,14 @@ export class Tab4Page implements OnInit {
   register(values: any): void {
     let supplier: Supplier = { ...values };
     this.firebase.save(supplier);
+    this.supplierForm.reset();
+    this.router.navigateByUrl('/tabs/tab5');
   }
 
-  getCep() {
-    const cep: string = this.supplierForm.get('address')?.get('cep')?.value;
+  getCep(value: any) {
+    let supplier: Supplier = { ...value };
+
+    const cep: string = supplier.address.cep;
 
     this.correiosService.requestCEP(cep).subscribe({
       next: (result: Address) => {
@@ -107,19 +109,12 @@ export class Tab4Page implements OnInit {
   }
 
   update(values: any) {
-    // const supplier = this.supplierForm.getRawValue() as Supplier;
     let supplier: Supplier = { ...values };
     supplier.id = this.supplier.id;
 
     this.firebase.update(supplier);
 
-    // this.supplierService.update(supplier).subscribe({
-    //   next: () => {
-    //     this.router.navigateByUrl('/tabs/tab5');
-    //     this.supplierForm.reset();
-    //   },
-    //   error: (err) => { console.error(err); this.supplierForm.reset() }
-    // })
+    this.router.navigateByUrl('/tabs/tab5');
 
   }
 

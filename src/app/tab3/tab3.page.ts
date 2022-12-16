@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { ModalProductComponent } from '../modal-product/modal-product.component';
 import { ModalController } from '@ionic/angular';
 
-import { ProductService } from '../service/product.service';
-
 import { Product } from '../model/product.model';
+import { FirebaseProductService } from '../service/firebase-product.service';
 
 @Component({
   selector: 'app-tab3',
@@ -16,9 +15,8 @@ export class Tab3Page {
   products !: Product[];
 
   constructor(
-    private productService: ProductService,
-
     private modalCtrl: ModalController,
+    private firebaseProduct: FirebaseProductService
   ) { }
 
   public ionViewWillEnter(): void {
@@ -26,13 +24,13 @@ export class Tab3Page {
   }
 
   list() {
-    this.productService.list().subscribe({
+    this.firebaseProduct.list().subscribe({
       next: (rs) => { this.products = rs },
-      error: (err) => { console.error(err) },
+      error: (err) => { console.error(err) }
     })
   }
 
-  async openModal(id: number) {
+  async openModal(id: string) {
     const product = this.products.filter(product => product.id == id)[0];
 
     const modal = await this.modalCtrl.create({

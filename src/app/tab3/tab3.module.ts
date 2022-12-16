@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CorreiosService } from '../service/correios.service';
 import { ProductService } from '../service/product.service';
 import { SupplierService } from '../service/supplier.service';
+import { FirebaseProductService } from '../service/firebase-product.service';
 
 
 @NgModule({
@@ -23,6 +24,6 @@ import { SupplierService } from '../service/supplier.service';
     ModalProductModule
   ],
   declarations: [Tab3Page],
-  providers: [CorreiosService, ProductService, SupplierService]
+  providers: [CorreiosService, ProductService, SupplierService, FirebaseProductService]
 })
 export class Tab3PageModule {}

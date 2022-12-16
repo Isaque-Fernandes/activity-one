@@ -14,7 +14,7 @@
   </ion-header>
 
   <ion-content>
-    <form [formGroup]="productForm" fullscreen>
+    <form [formGroup]="productForm" fullscreen #productFormDirective="ngForm">
       <ion-list lines="full" class="ion-no-margin ion-no-padding">
         <ion-item-group>
           <ion-item-divider>
@@ -59,7 +59,7 @@
 
       <div class="ion-padding">
         <ion-button expand="block" [disabled]="productForm.invalid" type="submit"
-          (click)=" editable ? update() : register();">
+          (click)=" editable ? update(productForm.value) : register(productForm.value);">
           {{editable ? 'Update' : 'Register'}}
         </ion-button>
       </div>

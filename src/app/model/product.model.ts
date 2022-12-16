@@ -1,7 +1,7 @@
 import { Supplier } from "./supplier.model";
 
 export interface Product {
-    id: number;
+    id: string;
     productName: string;
     quantity: number;
     purchasePrice: number;
