@@ -39,9 +39,9 @@ export class Tab2Page implements OnInit {
 
     this.productForm = new FormGroup({
       'productName': new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[A-z ]+$/)]),
-      'quantity': new FormControl('', [Validators.required, Validators.minLength(1), Validators.pattern(/^[0-9]$/)]),
-      'purchasePrice': new FormControl('', [Validators.required, Validators.pattern(/^[0-9]$/)]),
-      'percentage': new FormControl('', [Validators.required, Validators.pattern(/^[0-9]$/)]),
+      'quantity': new FormControl('', [Validators.required, Validators.minLength(1), Validators.pattern(/^[0-9]+$/)]),
+      'purchasePrice': new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+$/)]),
+      'percentage': new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+$/)]),
       'salePrice': new FormControl('', [Validators.required]),
       'supplier': new FormGroup({
         'id': new FormControl('', []),
@@ -131,8 +131,10 @@ export class Tab2Page implements OnInit {
 
     this.productForm.reset();
 
+
+
     this.router.navigateByUrl('/tabs/tab3');
-    
+
   }
 
 }
